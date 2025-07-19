@@ -33,19 +33,19 @@ class PostsCollectionAPIView(APIView):
 
 class PostItemAPIView(APIView):
     """
-    PATCH /<id>/  → Update (title/content) and returns (title, content)
+    PATCH /<id>/  → Updates (title/content) and returns (title, content)
     DELETE /<id>/ → Deletes the Post and return an empty body (204)
     """
 
-    def patch(self, request, pk):
-        post = get_object_or_404(Post, pk=pk)
+    def patch(self, request, id):
+        post = get_object_or_404(Post, pk=id)
         serializer = PostUpdateSerializer(post, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk):
-        post = get_object_or_404(Post, pk=pk)
+    def delete(self, request, id):
+        post = get_object_or_404(Post, pk=id)
         post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
