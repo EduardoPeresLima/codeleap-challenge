@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:  
+  backend:
+    depends_on:
+      - database
+    build: 
+      context: ./backend
+      no_cache: true #Set to true to make a clean build
+    ports:
+      - 8000:8000
+    command: bash -c "sleep 10 && gunicorn codeleapChallenge.wsgi:application --bind 0.0.0.0:8000"
+    restart: 'always'
+  database:
+    build: ./database
+    ports:
+      - 3309:3306
+    environment:
+      - MARIADB_ROOT_PASSWORD=12345
+
+volumes:
+  database_volume:
