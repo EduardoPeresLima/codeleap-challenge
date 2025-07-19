@@ -1,0 +1,14 @@
+Frontend
+- Will enter a username that will be saved locally, dont need to create user on the backend
+- Username will be used when creating a post later on
+
+- Can create posts (POST)
+- Can fetch and read posts (GET all) (maybe sort filter?)
+- Can Update items - only your own (those linked to the username?) (PATCH)
+- Can Delete items - only your own (those linked to the username?) (DELETE)
+- When a new post is created, should update automatically the list (GET all)
+
+- A post have Title(string) and Content (string) and belongs to someone
+
+Backend
+- Utilize Django Rest Framework(DRF)
