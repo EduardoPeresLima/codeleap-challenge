@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "up": "npm run down && docker compose up -d --build",
+        "down": "docker compose down -v --remove-orphans --rmi all"
+    }
+}
