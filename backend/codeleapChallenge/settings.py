@@ -15,9 +15,10 @@ import os
 import environ
 
 env = environ.Env()
-environ.Env.read_env()  # Read .env
+environ.Env.read_env("./.env")  # Read .env
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost"])
+print("ALLOWED_HOSTS =", ALLOWED_HOSTS)
 DEBUG = env.bool("DEBUG", default=False)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,8 +33,6 @@ SECRET_KEY = 'django-insecure-h%xd9qn6zwr#k^%)1%$!^-0agib36dky4f&4jz=3kb5e&ndrm&
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
