@@ -2,12 +2,10 @@ from django.db import models
 
 # Database Entities
 
-# TODO: Maybe review later
-
 class Post(models.Model):
-    username = models.CharField(max_length=200) # Maybe define a max_length = 200 or smt?
-    title = models.CharField(max_length=200)    # Same here
-    content = models.TextField()  # Same here
+    username = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
+    content = models.TextField()
     created_datetime = models.DateTimeField(auto_now_add=True)
 
     # class Meta:
@@ -15,3 +13,23 @@ class Post(models.Model):
 
     def __str__(self):
         return f"{self.username}: {self.title}"
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Post, 
+        on_delete=models.CASCADE, # When deleting a post, all their comments will delete as well
+        related_name='comments'
+    )
+    parent_comment = models.ForeignKey(
+        'self', 
+        null=True, 
+        blank=True, 
+        on_delete=models.CASCADE, # When deleting a comment, all their inside comments will delete as well
+        related_name='replies'
+    )
+    content = models.TextField()
+    created_datetime = models.DateTimeField(auto_now_add=True)
+    username = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Comment {self.id} on Post {self.post.id}"
