@@ -19,6 +19,11 @@ environ.Env.read_env("./.env")  # Read .env
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost"])
 DEBUG = env.bool("DEBUG", default=False)
+DB_USER = env.str("DB_USER", default="DB_USER")
+DB_PASSWORD = env.str("DB_PASSWORD", default="DB_PASSWORD")
+DB_HOST = env.str("DB_HOST", default="DB_HOST")
+DB_PORT = env.str("DB_PORT", default="DB_PORT")
+DB_NAME = env.str("DB_NAME", default="DB_NAME")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,8 +95,15 @@ WSGI_APPLICATION = 'codeleapChallenge.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        },
     }
 }
 

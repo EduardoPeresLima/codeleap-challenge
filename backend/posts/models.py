@@ -5,8 +5,8 @@ from django.db import models
 # TODO: Maybe review later
 
 class Post(models.Model):
-    username = models.CharField() # Maybe define a max_length = 200 or smt?
-    title = models.CharField()    # Same here
+    username = models.CharField(max_length=200) # Maybe define a max_length = 200 or smt?
+    title = models.CharField(max_length=200)    # Same here
     content = models.TextField()  # Same here
     created_datetime = models.DateTimeField(auto_now_add=True)
 
