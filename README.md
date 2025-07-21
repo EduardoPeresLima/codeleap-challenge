@@ -1,4 +1,8 @@
 # CodeLeap Challenge
+## Important!!
+Please notice that I deployed the project on a Render free-tier subscription, so the database will only last until 19 August 2025.<br>
+Contact me if this day has passed so I can try uploading a new one to make the project work!
+
 ## Deploy URL
 - https://codeleap-challenge-api.onrender.com/
 ## Endpoints available
