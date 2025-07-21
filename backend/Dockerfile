@@ -21,5 +21,10 @@ RUN python manage.py collectstatic --noinput
 # Expose the port (Remember that Vercel uses port 3000 by default or the ENV Variable $PORT)
 EXPOSE 8000
 
+# Add a entrypoint to run migrations and then the app
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+CMD ["./entrypoint.sh"]
 # Comamand to run the API on gunicorn
 # CMD ["gunicorn", "codeleapChallenge.wsgi:application", "--bind", "0.0.0.0:8000"]
