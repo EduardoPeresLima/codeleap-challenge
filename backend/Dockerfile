@@ -4,18 +4,8 @@ FROM python:3.11-slim
 # Creating a directory inside the container
 WORKDIR /app
 
-# Instalar system dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    pkg-config \
-    default-libmysqlclient-dev \
-    gcc \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-    # Copy requirements.txt and install depen
+# Copy requirements.txt and install dependencies
 COPY requirements.txt .
-
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN pip install gunicorn

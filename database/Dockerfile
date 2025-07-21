@@ -1,3 +1,3 @@
-FROM mariadb:latest
+FROM postgres:latest
 
-COPY ./mariadb-init.sql /docker-entrypoint-initdb.d/
+COPY ./postgres-init.sql /docker-entrypoint-initdb.d/

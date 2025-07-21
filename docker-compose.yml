@@ -14,9 +14,9 @@ services:
   database:
     build: ./database
     ports:
-      - 3309:3306
+      - 5432:5432
     environment:
-      - MARIADB_ROOT_PASSWORD=12345
+      POSTGRES_PASSWORD: 12345
 
 volumes:
   database_volume:
